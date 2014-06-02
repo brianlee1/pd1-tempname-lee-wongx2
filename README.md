@@ -1,5 +1,5 @@
-1. Brian Lee,
-2. Riley Wong,
-3. Bismark Wong,
+1. Brian Lee
+2. Riley Wong
+3. Bismark Wong
 
-Our project will basically be Asteroids.
+Our project will be a variation of Asteroids
