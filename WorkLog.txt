@@ -1,4 +1,9 @@
-Name | Brian Lee     | Riley Wong    | Bismarck Wong
----- | ------------- | ------------- |
-     | Content Cell  | Content Cell  |
-     | Content Cell  | Content Cell  |
+Name   |            Brian Lee           |            Riley Wong          |             Bismarck Wong       |
+----   | ------------------------------ | ------------------------------ |---------------------------------|
+June 2 | Content Cell                   | Content Cell                   |                                 |
+June 3 | Content Cell                   |                  Content Cell  |                                 |
+June 4 |                                |                                |                                 |
+June 4 |                                |                                |                                 |
+June 4 |                                |                                |                                 |
+June 4 |                                |                                |                                 |
+June 4 |                                |                                |                                 |
