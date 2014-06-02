@@ -1,3 +1,3 @@
-Brian Lee
-Riley Wong
+Brian Lee,
+Riley Wong,
 Bismark Wong
