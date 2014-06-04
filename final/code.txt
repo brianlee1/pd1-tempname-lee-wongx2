@@ -1,1 +1,69 @@
-afsd
+int radius = 10, directionX = 1, directionY = 0;
+float x=20, y=20, speed=0.5;
+PVector playerpos = new PVector(400, 400);
+
+void setup()
+{
+  size(500, 500);
+  smooth();
+
+  noStroke();
+  ellipseMode(RADIUS);
+}
+void draw()
+{
+  background(31,56,132);
+
+  x=x+speed*directionX;
+  y=y+speed*directionY; 
+
+  if ((x>width-radius) || (x<radius))
+  {   
+    directionX=-directionX;
+  }
+  if ((y>height-radius) || (y<radius))
+  {   
+    directionY=-directionY;
+  } 
+     translate(playerpos.x, playerpos.y);
+     rotate(atan2(mouseY-playerpos.y, mouseX-playerpos.x));
+  fill (color(222, 22, 22)); 
+  ellipse (x, y, radius, radius); 
+  fill (color(22, 82, 22)); 
+  ellipse (x-4, y-4, 2, 2); 
+}
+
+void keyPressed()
+{
+  if (key == CODED)
+  {
+    if (keyCode == LEFT)
+    {
+     
+      directionX=-2;
+      directionY=0;
+
+    }
+    else if (keyCode == RIGHT)
+    {
+  
+      directionX=2;
+      directionY=0;
+
+    }
+    else if (keyCode == UP)
+    {
+   
+      directionY=-2;
+      directionX=0;
+   
+    }
+    else if (keyCode == DOWN)
+    {
+  
+      directionY=2;
+      directionX=0;
+   
+    }
+  }
+}
