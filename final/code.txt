@@ -34,7 +34,7 @@ void draw() {
      rotate(atan2(mouseY-playerpos.y, mouseX-playerpos.x));
       rect(0, 0, 20, 50);
     }
-*/
+ ========================================
 int radius = 10, directionX = 1, directionY = 0;
 float x=20, y=20, speed=0.5;
 PVector playerpos = new PVector(400, 400);
@@ -53,7 +53,6 @@ void setup()
 }
 void draw()
 {
-  //background(123,234,21);
   background(17,231,122);
 
  
@@ -128,3 +127,74 @@ void keyPressed()
     }
   }
 }
+*/
+ ArrayList <Bullet> projectiles = new ArrayList <Bullet> ();
+    PVector triang, pVel;
+    float velMax = 3;
+
+    void setup() {
+      size(600, 600);
+      triang = new PVector(width/2, height/2);
+      pVel = new PVector();
+      noCursor();
+      noStroke();
+      smooth();
+    }
+
+    void draw() {
+      background(255);
+
+      triang.add(pVel);
+      fill(255, 0, 0);
+      ellipse(triang.x, triang.y, 20, 20);
+      fill(255);
+      ellipse(triang.x, triang.y, 10, 10);
+
+      PVector xyNow = new PVector(mouseX, mouseY);
+      fill(0);
+      ellipse(xyNow.x, xyNow.y, 5, 5);
+
+      if (frameCount%5==0 && mousePressed) {
+        PVector direc = PVector.sub(xyNow, triang);
+        direc.normalize();
+        direc.mult(velMax*3);
+        Bullet b = new Bullet(triang, direc);
+        projectiles.add(b);
+      }
+
+      for (int I = 0; I < projectiles.size(); I++) {
+        Bullet b = projectiles.get(I);
+b.update();
+        b.display();
+      }
+    }
+
+    class Bullet extends PVector {
+      PVector vel;
+
+      Bullet(PVector loc, PVector vel) {
+        super(loc.x, loc.y);
+        this.vel = vel.get();
+      }
+
+      void update() {
+        add(vel);
+      }
+
+      void display() {
+        fill(0, 0, 255);
+        ellipse(x, y, 3, 3);
+      }
+    }
+
+    void keyPressed() {
+      if (keyCode == UP)    { pVel.y = -velMax; }
+      if (keyCode == DOWN)  { pVel.y = velMax;  }
+      if (keyCode == LEFT)  { pVel.x = -velMax; }
+      if (keyCode == RIGHT) { pVel.x = velMax;  }
+    }
+
+    void keyReleased() {
+      if (keyCode == UP || keyCode == DOWN)    { pVel.y = 0; }
+      if (keyCode == LEFT || keyCode == RIGHT) { pVel.x = 0; }
+    }
