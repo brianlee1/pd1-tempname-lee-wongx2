@@ -1,7 +1,7 @@
 Name   |            Brian Lee           |            Riley Wong          |             Bismarck Wong       |
 ----   | ------------------------------ | ------------------------------ |---------------------------------|
-June 2 | Downloaded processing          |  Made WorkLog/ Download proces |Got ellipse to follow mouse on click                        |
-June 3 | Got shape to face mouse        |                  CrossHair     |Trying to get bullets to work                                 |
+June 2 | Downloaded processing          |  Made WorkLog/ Download proces |Got ellipse to follow mouse on click |
+June 3 | Got shape to face mouse        |                  CrossHair     |Trying to get bullets to work        |
 June 4 |  Got shape to move with arrows | Got CrossHair to work          |                                 |
 June 5 |                                |                                |                                 |
 June 6 |                                |                                |                                 |
