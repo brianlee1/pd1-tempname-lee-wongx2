@@ -54,7 +54,7 @@ void setup()
 void draw()
 {
   //background(123,234,21);
-  background(517);
+  background(17,231,122);
 
  
   x=x+speed*directionX;
@@ -70,11 +70,7 @@ void draw()
   } 
    //  translate(playerpos.x, playerpos.y);
    //  rotate(atan2(mouseY-playerpos.y, mouseX-playerpos.x));
-  fill (color(27, 22, 22)); 
-  ellipse (x, y, radius, radius); 
-  fill (color(22, 82, 22)); 
-  ellipse (x-4, y-4, 2, 2); 
-  float targetX = mouseX;
+     float targetX = mouseX;
   float dx = targetX - xd;
   if(abs(dx) > 1) {
     xd += dx * easing;
@@ -88,7 +84,14 @@ void draw()
   stroke(1);
   line(mouseX-20, mouseY, mouseX+20, mouseY);
   line(mouseX, mouseY-20, mouseX, mouseY+20); 
+   tint(255,0);
   ellipse(xd, yd, 10, 10);
+ 
+  fill (color(27, 22, 22)); 
+  ellipse (x, y, radius, radius); 
+  fill (color(22, 182, 22)); 
+  ellipse (x-4, y-4, 2, 2); 
+
 }
 
 void keyPressed()
