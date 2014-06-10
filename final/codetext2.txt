@@ -149,9 +149,8 @@ int ydirection = 1;  // Top to Bottom
       noCursor();
       noStroke();
       smooth();
-      for (int i = 0; i < 20; i++){
-        rocks.add(new Rock(;
-      }
+ 
+      
 
     }
 
@@ -176,10 +175,18 @@ int ydirection = 1;  // Top to Bottom
         Bullet b = new Bullet(triang, direc);
         projectiles.add(b);
       }
+      
+      if (rocks.size() < 20){
+        PVector direction = PVector.sub(xyNow, triang);
+        direction.normalize();
+        direction.mult(velMax*3);
+        Rock r = new Rock(triang, direction);
+        rocks.add(r);
+      }
 
       for (int I = 0; I < projectiles.size(); I++) {
         Bullet b = projectiles.get(I);
-b.update();
+        b.update();
         b.display();
       }
     }
@@ -214,15 +221,25 @@ b.update();
       if (keyCode == LEFT || keyCode == RIGHT) { pVel.x = 0; }
     }
 
-    class Rock{
+    class Rock extends PVector{
        PVector location;
-      PVector velocity;
-     float r;
-     Rock(float x, float y){
-       float angle = random(TWO_PI);
-       velocity = new PVector(cos(angle), sin(angle));
-       location = new PVector(x,y);
-       r = 2.0;
+       PVector velocity;
+       float r;
+        Rock(PVector location, PVector velocity){
+         float angle = random(TWO_PI);
+         velocity = new PVector(cos(angle), sin(angle));
+         location = new PVector(x,y);
+         r = 2.0;
+        }
+
+      void update() {
+        add(velocity);
+      }
+
+      void display() {
+        fill(123, 32, 25);
+        ellipse(x, y, 6, 6);
+      
      }
      
      void run(ArrayList<Rock> rocks){
@@ -231,12 +248,9 @@ b.update();
       render(); 
      }
      
-     void update(){
-         location.add(velocity);
-     }
-     
+
      void render(){
-       float theta = velocity2D() + radians(90);
+       float theta = velocity.heading2D() + radians(90);
      fill(23,22,131);
      stroke(255);
      pushMatrix();
@@ -253,5 +267,4 @@ b.update();
      if (location.y > height + r) location.x = -r;
    }
      
-     
-    
+    }
