@@ -165,6 +165,7 @@ int ydirection = 1;  // Top to Bottom
       ellipse(triang.x, triang.y, 10, 10);
 
       PVector xyNow = new PVector(mouseX, mouseY);
+      PVector dis = new PVector(random(600),random(600));
       fill(255);
       stroke(0);
       ellipse(xyNow.x, xyNow.y, 5, 5);
@@ -178,7 +179,7 @@ int ydirection = 1;  // Top to Bottom
       }
       
       if (rocks.size() < 20){
-        PVector direction = PVector.sub(xyNow, triang);
+        PVector direction = PVector.sub(dis, triang);
         direction.normalize();
         direction.mult(rockvelMax);
         Rock r = new Rock(triang, direction);
@@ -195,6 +196,8 @@ int ydirection = 1;  // Top to Bottom
         Rock r = rocks.get(I);
         r.update();
         r.display();
+        r.borders();
+
       }
     }
 
@@ -238,19 +241,20 @@ int ydirection = 1;  // Top to Bottom
          location = new PVector(random(600),random(600));
          r = 2.0;
          this.velocity = velocity.get();
+         this.location = location.get();
         }
 
       void update() {
-        add(velocity);
+        location.add(velocity);
       }
 
       void display() {
         fill(123, 32, 25);
-        ellipse(random(600), random(600), 6, 6);
+        ellipse(location.x, location.y, 6, 6);
       
      }
      
-     void run(ArrayList<Rock> rocks){
+/*    void run(ArrayList<Rock> rocks){
         update();
        borders();
       render(); 
@@ -267,12 +271,12 @@ int ydirection = 1;  // Top to Bottom
      ellipse(random(600),random(600),5,5);
      popMatrix();  
    }
-   
+   */
    void borders(){
-     if (location.x < -r) location.x = width + r;
-     if (location.y < -r) location.y = height + r;
-     if (location.x > width + r) location.x = -r;
-     if (location.y > height + r) location.x = -r;
+     if (this.location.x < -r) this.location.x = width + r;
+     if (this.location.y < -r) this.location.y = height + r;
+     if (this.location.x > width + r) this.location.x = -r;
+     if (this.location.y > height + r) this.location.x = -r;
    }
-     
+    
     }
