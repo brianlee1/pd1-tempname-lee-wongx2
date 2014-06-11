@@ -1,3 +1,39 @@
+   void checkRockHits() {
+ 
+ 
+  for (int i = 0; i < rocks.size(); i++) {
+    Rock current = asteroids.get(i);
+
+    float nowX = current.getX();
+
+    float nowY = current.getY();
+    for (int j = 0; j < projectiles.size(); j++) {
+      Bullet ammo = projectiles.get(j);
+
+      float bX = ammo.getX(); 
+      float bY = ammo.getY(); 
+   
+      if ((sq(nowY - bY) + sq(nowX-bX)) < 200) {
+        rocks.remove(i);
+        projectiles.remove(j);
+      }
+     
+      if (rocks.size() == 0) {
+	//end the game
+      }
+    }
+  }
+} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     ArrayList <Bullet> projectiles = new ArrayList <Bullet> ();
     PVector triang, pVel;
     float velMax = 3;
