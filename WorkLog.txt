@@ -7,7 +7,7 @@ June 5 |                                |                                |Added 
 June 6 | Tried to fix some colorings    |                                |                                 |
 June 7 |                                |                                |                                 |
 June 8 |                                |                                |                                 |
-June 9 | Worked on asteroids            |  Working on borders            |                                 |
+June 9 | Worked on asteroids            |  Working on borders            |Worked on collision                                 |
 June 10| Made asteroids appear, fixing  |                                |                                 |
 June 11|                                |                                |                                 |
 June 12|                                |                                |                                 |
