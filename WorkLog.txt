@@ -9,8 +9,8 @@ June 7 |                                |                                |      
 June 8 |                                |                                |                                 |
 June 9 | Worked on asteroids            |  Working on borders            |Worked on collision                                 |
 June 10| Made asteroids appear, fixing  |                                |                                 |
-June 11|                                |                                |                                 |
-June 12|                                |                                |                                 |
+June 11|                                | Tried to make map wrapped      |                                 |
+June 12|                                |Working on bullet hitting rock  |                                 |
 June 13|                                |                                |                                 |
 June 14|                                |                                |                                 |
 June 15|                                |                                |                                 |
