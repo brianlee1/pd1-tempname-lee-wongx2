@@ -167,6 +167,11 @@ void keyPressed()
 b.update();
         b.display();
       }
+   /*     if (x > width+30) x = -20;
+  else if (x < -20) x = width+30;
+  if (y > height+20) y = -20;
+  else if (y < -20) y = height+20;
+ */
     }
 
     class Bullet extends PVector {
