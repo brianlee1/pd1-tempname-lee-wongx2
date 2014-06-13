@@ -8,10 +8,10 @@ June 6 | Tried to fix some colorings    |                                |      
 June 7 |                                |                                |                                 |
 June 8 |                                |                                |                                 |
 June 9 | Worked on asteroids            |  Working on borders            |Worked on collision              |
-June 10| Made asteroids appear, fixing  |                                |                                 |
+June 10| Made asteroids appear, fixing  |    Updated movement to WASD    |                                 |
 June 11| Asteroids work now             | Tried to make map wrapped      |                                 |
 June 12| Failed to make collision work  |Working on bullet hitting rock  |                                 |
-June 13|                                |                                |                                 |
+June 13|                                |  Successfuly wrapped player    |                                 |
 June 14|                                |                                |                                 |
 June 15|                                |                                |                                 |
 June 16|                                |                                |                                 |
