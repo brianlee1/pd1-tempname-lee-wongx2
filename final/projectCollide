@@ -1,0 +1,320 @@
+/*int rad = 50;
+int vi = 1;
+int a = 1;
+int d = 1;
+float xpos, ypos;
+int xdirection = 1;
+
+void setup(){
+    size(800,800);
+    background(123,231,24);
+    frameRate(20);
+    xpos = 30;
+    ypos = height/2;
+}
+
+void draw(){
+  background(123,231,24);
+  triangle(xpos,ypos,rad,rad,rad,);
+}
+
+
+
+PVector playerpos = new PVector(400, 400);
+
+void setup() {
+   size(800,800);
+   smooth();
+ }
+void draw() {
+    background(255);
+    rectMode(CENTER);
+    fill(0);
+     translate(playerpos.x, playerpos.y);
+     rotate(atan2(mouseY-playerpos.y, mouseX-playerpos.x));
+      rect(0, 0, 20, 50);
+    }
+ ========================================
+int radius = 10, directionX = 1, directionY = 0;
+float x=20, y=20, speed=0.5;
+PVector playerpos = new PVector(400, 400);
+
+float xd;
+float yd;
+float easing = 1;
+
+void setup()
+{
+  size(500, 500);
+  smooth();
+
+  noStroke();
+  ellipseMode(RADIUS);
+}
+void draw()
+{
+  background(17,231,122);
+
+ 
+  x=x+speed*directionX;
+  y=y+speed*directionY;
+
+  if ((x>width-radius) || (x<radius))
+  {
+    directionX=-directionX;
+  }
+  if ((y>height-radius) || (y<radius))
+  {
+    directionY=-directionY;
+  }
+   // translate(playerpos.x, playerpos.y);
+   // rotate(atan2(mouseY-playerpos.y, mouseX-playerpos.x));
+     float targetX = mouseX;
+  float dx = targetX - xd;
+  if(abs(dx) > 1) {
+    xd += dx * easing;
+  }
+  
+  float targetY = mouseY;
+  float dy = targetY - yd;
+  if(abs(dy) > 1) {
+    yd += dy * easing;
+  }
+  stroke(1);
+  line(mouseX-20, mouseY, mouseX+20, mouseY);
+  line(mouseX, mouseY-20, mouseX, mouseY+20);
+   tint(255,0);
+  ellipse(xd, yd, 10, 10);
+ 
+  fill (color(27, 22, 22));
+  ellipse (x, y, radius, radius);
+  fill (color(22, 182, 22));
+  ellipse (x-4, y-4, 2, 2);
+
+}
+
+void keyPressed()
+{
+  if (key == CODED)
+  {
+    if (keyCode == LEFT)
+    {
+     
+      directionX=-2;
+      directionY=0;
+
+    }
+    else if (keyCode == RIGHT)
+    {
+  
+      directionX=2;
+      directionY=0;
+
+    }
+    else if (keyCode == UP)
+    {
+   
+      directionY=-2;
+      directionX=0;
+   
+    }
+    else if (keyCode == DOWN)
+    {
+  
+      directionY=2;
+      directionX=0;
+   
+    }
+  }
+}
+*/
+ ArrayList <Bullet> projectiles = new ArrayList <Bullet> ();
+ ArrayList <Rock> rocks = new ArrayList <Rock> ();
+ PVector triang, pVel;
+ float velMax = 5;
+ float rockvelMax = 5;
+ int rad = 60;     
+ float xpos, ypos;     
+ int xdirection = 1; 
+ int ydirection = 1; 
+ PImage img;
+
+
+    void setup() {
+      size(1000, 600);
+      triang = new PVector(width/2, height/2);
+      pVel = new PVector();
+      noCursor();
+      noStroke();
+      smooth();
+      img = loadImage("beautiful.jpg");
+      
+
+    }
+
+    void draw() {
+      image(img, 0, 0, 1000 , 600);
+
+      triang.add(pVel);
+      fill(255, 0, 0);
+      ellipse(triang.x, triang.y, 20, 20);
+      fill(255);
+      ellipse(triang.x, triang.y, 10, 10);
+
+      PVector xyNow = new PVector(mouseX, mouseY);
+      PVector dis = new PVector(random(600),random(600));
+      fill(255);
+      stroke(0);
+      ellipse(xyNow.x, xyNow.y, 5, 5);
+
+      if (frameCount%5==0 && mousePressed) {
+        PVector direc = PVector.sub(xyNow, triang);
+        direc.normalize();
+        direc.mult(velMax*3);
+        Bullet b = new Bullet(triang.x, triang.y, atan((triang.y- mouseY)/(mouseX - triang.x) ));
+        projectiles.add(b);
+      }
+      
+      if (rocks.size() < 20){
+        PVector direction = PVector.sub(dis, triang);
+        direction.normalize();
+        direction.mult(rockvelMax);
+        Rock r = new Rock(triang, direction);
+        rocks.add(r);
+      }
+
+      for (int I = 0; I < projectiles.size(); I++) {
+        Bullet b = projectiles.get(I);
+        b.update();
+        b.display();
+      }
+      
+      for (int I = 0; I < rocks.size(); I++) {
+        Rock r = rocks.get(I);
+        r.update();
+        r.display();
+        r.borders();
+
+      }
+      
+      if(triang.x <= -10)
+        triang.x = 1000;
+      if(triang.x >= 1010)
+        triang.x = 0;
+      if(triang.y <= -10)
+        triang.y = 600;
+      if(triang.y >= 610)
+        triang.y = 0;
+        
+        
+      checkRockHits();
+    }
+
+    class Bullet  {
+      float x;
+      float y;
+      float vel;
+      float angle;
+      
+
+      Bullet(float xcor, float ycor, float ang) {
+        x = xcor;//random(height);
+        y = ycor;//random(width);
+        vel = 2;
+        angle = ang;
+        
+      }
+      
+      
+
+      float getX(){
+         return x;
+      }
+      float getY(){
+          return y;
+      }
+      
+      void update(){
+         x=x +(vel*cos(angle));
+         y=y+ (vel*sin(angle));
+      }
+
+      void display() {
+        fill(123, 223, 55);
+        ellipse(x, y, 3, 3);
+      }
+    }
+
+    void keyPressed() {
+      if (keyCode == 'W') { pVel.y = -velMax; }
+      if (keyCode == 'S') { pVel.y = velMax; }
+      if (keyCode == 'A') { pVel.x = -velMax; }
+      if (keyCode == 'D') { pVel.x = velMax; }
+    }
+
+    void keyReleased() {
+      if (keyCode == 'W' || keyCode == 'S') { pVel.y = 0; }
+      if (keyCode == 'A' || keyCode == 'D') { pVel.x = 0; }
+    }
+
+    class Rock extends PVector{
+       PVector location;
+       PVector velocity;
+       float r;
+        Rock(PVector location, PVector velocity){
+         float angle = random(TWO_PI);
+         velocity = new PVector(cos(angle), sin(angle));
+         location = new PVector(random(1000),random(600));
+         r = 2.0;
+         this.velocity = velocity.get();
+         this.location = location.get();
+        }
+
+      void update() {
+        location.add(velocity);
+      }
+
+      void display() {
+        fill(123, 32, 25);
+        ellipse(location.x, location.y, 10, 10);
+      
+     }
+     
+   void borders(){
+     if (this.location.x < -r) this.location.x = width + r;
+     if (this.location.y < -r) this.location.y = height + r;
+     if (this.location.x > width + r) this.location.x = -r;
+     if (this.location.y > height + r) this.location.y = -r;
+   }
+    
+    }
+ void checkRockHits() {
+
+ 
+  for (int i = 0; i < rocks.size(); i++) {
+    Rock current = rocks.get(i);
+
+    float nowX = current.location.x;
+
+    float nowY = current.location.y;
+  
+    for (int j = 0; j < projectiles.size(); j++) {
+        Bullet ammo = projectiles.get(j);
+
+
+          float bX = ammo.getX();
+          float bY = ammo.getY();
+        
+        if ((sq(nowY - bY) + sq(nowX-bX)) < 200) {
+          rocks.remove(i);
+          projectiles.remove(j);
+        }
+     
+        if (rocks.size() == 0) {
+//end the game
+        }
+      }
+    }
+  
+  }
+  
