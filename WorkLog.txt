@@ -12,8 +12,8 @@ June 10| Made asteroids appear, fixing  |    Updated movement to WASD    |      
 June 11| Asteroids work now             | Tried to make map wrapped      |                                 |
 June 12| Failed to make collision work  |Working on bullet hitting rock  |                                 |
 June 13|                                |  Successfuly wrapped player    |                                 |
-June 14|                                |                                |                                 |
-June 15|                                |                                |                                 |
+June 14|                                |                                |Worked on collision                                 |
+June 15|                                |                                |Fixed collision with asteroids and bullets, but now angle broken(im bad at math)   |
 June 16|                                |                                |                                 |
 June 17|                                |                                |                                 |
 June 18|                                |                                |                                 |
