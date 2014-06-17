@@ -14,7 +14,7 @@ June 12| Failed to make collision work  |Working on bullet hitting rock  |      
 June 13| Worked on the background       |  Successfuly wrapped player    |                                 |
 June 14|                                |                                |Worked on collision                                 |
 June 15|                                |                                |Fixed collision with asteroids and bullets, but now angle broken(im bad at math)   |
-June 16|                                |Fixed shooting problem          |                                 |
+June 16| Tried to fix shooting problem  |Fixed shooting problem          |                                 |
 June 17|                                |                                |                                 |
 June 18|                                |                                |                                 |
 June 19|                                |                                |                                 |
