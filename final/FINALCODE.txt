@@ -44,7 +44,7 @@
           projectiles.add(b);
         }
         else{
-           Bullet b = new Bullet(triang.x, triang.y, 270 + atan((mouseY - triang.y)/( mouseX - triang.x) ));
+           Bullet b = new Bullet(triang.x, triang.y, PI + atan((mouseY - triang.y)/( mouseX - triang.x) ));
            projectiles.add(b);
         }
         //projectiles.add(b);
